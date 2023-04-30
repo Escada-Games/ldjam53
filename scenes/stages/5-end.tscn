@@ -1,0 +1,218 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://resources/tileset2.tres" type="TileSet" id=1]
+[ext_resource path="res://resources/tileset1.tres" type="TileSet" id=2]
+[ext_resource path="res://resources/tileset2-noOutline.tres" type="TileSet" id=3]
+[ext_resource path="res://resources/tileset3.tres" type="TileSet" id=4]
+[ext_resource path="res://resources/tileset1-noOutline.tres" type="TileSet" id=5]
+[ext_resource path="res://resources/tileset3-noOutline.tres" type="TileSet" id=6]
+[ext_resource path="res://resources/textures/grassProps.png" type="Texture" id=7]
+[ext_resource path="res://scenes/deliveryZone.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/playerClawPair.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/bgSkyParallax.tscn" type="PackedScene" id=10]
+[ext_resource path="res://resources/textures/thanksForPlaying.png" type="Texture" id=11]
+[ext_resource path="res://resources/textures/madeByEg.png" type="Texture" id=12]
+[ext_resource path="res://scenes/colShape2dWithRing.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/smallBox.gd" type="Script" id=14]
+[ext_resource path="res://scenes/smallBoxWithRing.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/longBox.tscn" type="PackedScene" id=16]
+
+[sub_resource type="TileSet" id=1]
+0/name = "grassProps.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 128, 128 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 32, 32 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="PhysicsMaterial" id=2]
+rough = true
+bounce = 0.3
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 124, 35 )
+
+[node name="debugRoot" type="Node"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 180.0 ],
+"_edit_vertical_guides_": [ 320.0, 124.0, 516.0 ]
+}
+
+[node name="debug2d" type="Node2D" parent="."]
+position = Vector2( 1079, 285 )
+
+[node name="bgSkyParallax" parent="debug2d" instance=ExtResource( 10 )]
+
+[node name="tilemapsOffsetLayer" type="ParallaxBackground" parent="debug2d"]
+layer = -50
+
+[node name="tilemapsOffset2" type="ParallaxLayer" parent="debug2d/tilemapsOffsetLayer"]
+modulate = Color( 0.4, 0.4, 0.4, 1 )
+position = Vector2( 1031, 237 )
+scale = Vector2( 0.5, 0.5 )
+motion_scale = Vector2( 0.5, 0 )
+
+[node name="tileMap1" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset2"]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tileMap2" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset2"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tileMap3" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset2"]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tilemapsOffset1" type="ParallaxLayer" parent="debug2d/tilemapsOffsetLayer"]
+modulate = Color( 0.699219, 0.699219, 0.699219, 1 )
+position = Vector2( 1015, 237 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="tileMap1" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset1"]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -196611, 0, 196609, -196610, 0, 3, -196609, 0, 3, -262144, 0, 3, -262143, 0, 3, -262142, 0, 3, -262141, 0, 3, -262140, 0, 3, -262139, 0, 3, -262138, 0, 3, -262137, 0, 3, -262136, 0, 3, -262135, 0, 3, -262134, 0, 3, -262133, 0, 3, -262132, 0, 3, -262131, 0, 3, -262130, 0, 3, -262129, 0, 3, -262128, 0, 3, -262127, 0, 3, -262126, 0, 3, -262125, 0, 3, -262124, 0, 3, -262123, 0, 3, -262122, 0, 3, -262121, 0, 0, -262120, 0, 65538, -131075, 0, 1, -131074, 0, 65538, -131073, 0, 65538, -196608, 0, 65538, -196607, 0, 65538, -196606, 0, 65538, -196605, 0, 65538, -196604, 0, 65538, -196603, 0, 65538, -196602, 0, 65538, -196601, 0, 65538, -196600, 0, 65538, -196599, 0, 65538, -196598, 0, 65538, -196597, 0, 65538, -196596, 0, 65538, -196595, 0, 65538, -196594, 0, 65538, -196593, 0, 65538, -196592, 0, 65538, -196591, 0, 65538, -196590, 0, 65538, -196589, 0, 65538, -196588, 0, 65538, -196587, 0, 65538, -196586, 0, 65538, -196585, 0, 131075, -196583, 0, 196609, -196582, 0, 3, -196581, 0, 3, -196580, 0, 3, -196579, 0, 3, -196578, 0, 3, -196577, 0, 3, -196576, 0, 3, -196575, 0, 3, -196574, 0, 3, -196573, 0, 3, -196572, 0, 3, -196571, 0, 3, -196570, 0, 3, -196569, 0, 3, -196568, 0, 3, -196567, 0, 3, -196566, 0, 3, -196565, 0, 3, -196564, 0, 0, -196563, 0, 65538, -196562, 0, 65538, -196561, 0, 65538, -196560, 0, 65538, -196559, 0, 65538, -196558, 0, 65538, -196557, 0, 65538, -196556, 0, 65538, -65539, 0, 1, -65538, 0, 65538, -65537, 0, 65538, -131072, 0, 65538, -131071, 0, 65538, -131070, 0, 65538, -131069, 0, 65538, -131068, 0, 65538, -131067, 0, 65538, -131066, 0, 65538, -131065, 0, 65538, -131064, 0, 65538, -131063, 0, 65538, -131062, 0, 65538, -131061, 0, 65538, -131060, 0, 65538, -131059, 0, 65538, -131058, 0, 65538, -131057, 0, 65538, -131056, 0, 65538, -131055, 0, 65538, -131054, 0, 65538, -131053, 0, 65538, -131052, 0, 65538, -131051, 0, 65538, -131050, 0, 65538, -131049, 0, 2, -131048, 0, 0, -131047, 0, 131072, -131046, 0, 131073, -131045, 0, 131073, -131044, 0, 131073, -131043, 0, 131073, -131042, 0, 131073, -131041, 0, 131073, -131040, 0, 131073, -131039, 0, 131073, -131038, 0, 131073, -131037, 0, 131073, -131036, 0, 131073, -131035, 0, 131073, -131034, 0, 131073, -131033, 0, 131073, -131032, 0, 131073, -131031, 0, 131073, -131030, 0, 131073, -131029, 0, 131073, -131028, 0, 196611, -4, 0, 65538, -3, 0, 1, -2, 0, 65538, -1, 0, 65538, -65536, 0, 65538, -65535, 0, 65538, -65534, 0, 65538, -65533, 0, 65538, -65532, 0, 65538, -65531, 0, 65538, -65530, 0, 65538, -65529, 0, 65538, -65528, 0, 65538, -65527, 0, 65538, -65526, 0, 65538, -65525, 0, 65538, -65524, 0, 65538, -65523, 0, 65538, -65522, 0, 65538, -65521, 0, 65538, -65520, 0, 65538, -65519, 0, 65538, -65518, 0, 65538, -65517, 0, 65538, -65516, 0, 65538, -65515, 0, 65538, -65514, 0, 65538, -65513, 0, 65538, -65512, 0, 131075, 65533, 0, 1, 65534, 0, 65538, 65535, 0, 65538, 0, 0, 65538, 1, 0, 65538, 2, 0, 65538, 3, 0, 65538, 4, 0, 65538, 5, 0, 65538, 6, 0, 65538, 7, 0, 65538, 8, 0, 65538, 9, 0, 65538, 10, 0, 65538, 11, 0, 65538, 12, 0, 65538, 13, 0, 65538, 14, 0, 65538, 15, 0, 65538, 16, 0, 65538, 17, 0, 65538, 18, 0, 65538, 19, 0, 65538, 20, 0, 65538, 21, 0, 65538, 22, 0, 65538, 23, 0, 65538, 24, 0, 2, 25, 0, 3, 26, 0, 3, 27, 0, 3, 28, 0, 3, 29, 0, 3, 30, 0, 3, 31, 0, 3, 32, 0, 3, 33, 0, 3, 34, 0, 3, 35, 0, 3, 36, 0, 3, 37, 0, 3, 38, 0, 3, 39, 0, 3, 40, 0, 3, 41, 0, 3, 42, 0, 3, 43, 0, 0, 44, 0, 65538, 45, 0, 65538, 46, 0, 65538, 131069, 0, 131072, 131070, 0, 131073, 131071, 0, 131073, 65536, 0, 131073, 65537, 0, 131073, 65538, 0, 131073, 65539, 0, 131073, 65540, 0, 131073, 65541, 0, 131073, 65542, 0, 131073, 65543, 0, 131073, 65544, 0, 131073, 65545, 0, 131073, 65546, 0, 131073, 65547, 0, 131073, 65548, 0, 131073, 65549, 0, 131073, 65550, 0, 131073, 65551, 0, 131073, 65552, 0, 131073, 65553, 0, 131073, 65554, 0, 131073, 65555, 0, 131073, 65556, 0, 131073, 65557, 0, 131073, 65558, 0, 131073, 65559, 0, 131073, 65560, 0, 131073, 65561, 0, 131073, 65562, 0, 131073, 65563, 0, 131073, 65564, 0, 131073, 65565, 0, 131073, 65566, 0, 131073, 65567, 0, 131073, 65568, 0, 131073, 65569, 0, 131073, 65570, 0, 131073, 65571, 0, 131073, 65572, 0, 131073, 65573, 0, 131073, 65574, 0, 131073, 65575, 0, 131073, 65576, 0, 131073, 65577, 0, 131073, 65578, 0, 131073, 65579, 0, 196611 )
+
+[node name="tileMap2" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset1"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tileMap3" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset1"]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="deliveryZone" parent="debug2d" instance=ExtResource( 8 )]
+position = Vector2( 510, 232 )
+
+[node name="tilemaps" type="Node2D" parent="debug2d"]
+
+[node name="tileMap1" type="TileMap" parent="debug2d/tilemaps"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -655396, 0, 196609, -655395, 0, 3, -655394, 0, 3, -655393, 0, 3, -655392, 0, 3, -655391, 0, 3, -655390, 0, 3, -655389, 0, 3, -655388, 0, 3, -655387, 0, 3, -655386, 0, 3, -655385, 0, 3, -655384, 0, 3, -655383, 0, 3, -655382, 0, 3, -655381, 0, 3, -655380, 0, 3, -655379, 0, 3, -655378, 0, 3, -655377, 0, 3, -655376, 0, 3, -655375, 0, 3, -655374, 0, 3, -655373, 0, 3, -655372, 0, 0, -589860, 0, 131072, -589859, 0, 131073, -589858, 0, 131073, -589857, 0, 131073, -589856, 0, 131073, -589855, 0, 131073, -589854, 0, 131073, -589853, 0, 131073, -589852, 0, 131073, -589851, 0, 131073, -589850, 0, 131073, -589849, 0, 131073, -589848, 0, 131073, -589847, 0, 131073, -589846, 0, 131073, -589845, 0, 131073, -589844, 0, 131073, -589843, 0, 131073, -589842, 0, 131073, -589841, 0, 131073, -589840, 0, 131073, -589839, 0, 131073, -589838, 0, 131073, -589837, 0, 131073, -589836, 0, 196611, -36, 0, 196609, -35, 0, 3, -34, 0, 3, -33, 0, 3, -32, 0, 3, -31, 0, 3, -30, 0, 3, -29, 0, 3, -28, 0, 3, -27, 0, 3, -26, 0, 3, -25, 0, 3, -24, 0, 3, -23, 0, 3, -22, 0, 3, -21, 0, 3, -20, 0, 3, -19, 0, 3, -18, 0, 3, -17, 0, 3, -16, 0, 3, -15, 0, 3, -14, 0, 3, -13, 0, 3, -12, 0, 0, 65500, 0, 1, 65501, 0, 65538, 65502, 0, 65538, 65503, 0, 65538, 65504, 0, 65538, 65505, 0, 65538, 65506, 0, 65538, 65507, 0, 65538, 65508, 0, 65538, 65509, 0, 65538, 65510, 0, 65538, 65511, 0, 65538, 65512, 0, 65538, 65513, 0, 65538, 65514, 0, 65538, 65515, 0, 65538, 65516, 0, 65538, 65517, 0, 65538, 65518, 0, 65538, 65519, 0, 65538, 65520, 0, 65538, 65521, 0, 65538, 65522, 0, 65538, 65523, 0, 65538, 65524, 0, 131075, 131036, 0, 1, 131037, 0, 65538, 131038, 0, 65538, 131039, 0, 65538, 131040, 0, 65538, 131041, 0, 65538, 131042, 0, 65538, 131043, 0, 65538, 131044, 0, 65538, 131045, 0, 65538, 131046, 0, 65538, 131047, 0, 65538, 131048, 0, 65538, 131049, 0, 65538, 131050, 0, 65538, 131051, 0, 65538, 131052, 0, 65538, 131053, 0, 65538, 131054, 0, 65538, 131055, 0, 65538, 131056, 0, 65538, 131057, 0, 65538, 131058, 0, 65538, 131059, 0, 65538, 131060, 0, 131075, 196572, 0, 1, 196573, 0, 65538, 196574, 0, 65538, 196575, 0, 65538, 196576, 0, 65538, 196577, 0, 65538, 196578, 0, 65538, 196579, 0, 65538, 196580, 0, 65538, 196581, 0, 65538, 196582, 0, 65538, 196583, 0, 65538, 196584, 0, 65538, 196585, 0, 65538, 196586, 0, 65538, 196587, 0, 65538, 196588, 0, 65538, 196589, 0, 65538, 196590, 0, 65538, 196591, 0, 65538, 196592, 0, 65538, 196593, 0, 65538, 196594, 0, 65538, 196595, 0, 65538, 196596, 0, 131075, 262108, 0, 131072, 262109, 0, 131073, 262110, 0, 131073, 262111, 0, 131073, 262112, 0, 131073, 262113, 0, 131073, 262114, 0, 131073, 262115, 0, 131073, 262116, 0, 131073, 262117, 0, 131073, 262118, 0, 131073, 262119, 0, 131073, 262120, 0, 131073, 262121, 0, 131073, 262122, 0, 131073, 262123, 0, 131073, 262124, 0, 131073, 262125, 0, 131073, 262126, 0, 131073, 262127, 0, 131073, 262128, 0, 131073, 262129, 0, 131073, 262130, 0, 131073, 262131, 0, 131073, 262132, 0, 196611 )
+
+[node name="tileMap2" type="TileMap" parent="debug2d/tilemaps"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 917503, 0, 196609, 851968, 0, 3, 851969, 0, 0, 983039, 0, 1, 917504, 0, 65538, 917505, 0, 131075, 1048575, 0, 1, 983040, 0, 65538, 983041, 0, 131075, 1114111, 0, 1, 1048576, 0, 65538, 1048577, 0, 131075, 1179647, 0, 131072, 1114112, 0, 131073, 1114113, 0, 196611 )
+
+[node name="tileMap3" type="TileMap" parent="debug2d/tilemaps"]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 851971, 0, 196609, 851972, 0, 3, 851973, 0, 0, 917507, 0, 1, 917508, 0, 65538, 917509, 0, 131075, 983043, 0, 1, 983044, 0, 65538, 983045, 0, 131075, 1048579, 0, 1, 1048580, 0, 65538, 1048581, 0, 131075, 1114115, 0, 131072, 1114116, 0, 131073, 1114117, 0, 196611 )
+
+[node name="tileMapGrasProps" type="TileMap" parent="debug2d/tilemaps"]
+position = Vector2( 16, 16 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 1179680, 0, 327681, 1179681, 0, 196610, 1179682, 0, 131072, 1179683, 0, 196611, 1179684, 0, 65537, 1179685, 0, 65537 )
+
+[node name="playerClawPair" parent="debug2d" instance=ExtResource( 9 )]
+position = Vector2( -759, -176 )
+
+[node name="animatedSprite" parent="debug2d/playerClawPair/player" index="1"]
+frame = 1
+
+[node name="camera2D" parent="debug2d/playerClawPair/player" index="3"]
+limit_right = 640
+
+[node name="props" type="Node2D" parent="debug2d"]
+
+[node name="sprite2" type="Sprite" parent="debug2d/props"]
+position = Vector2( -759, 34 )
+z_index = 88
+texture = ExtResource( 12 )
+
+[node name="smallBox" type="RigidBody2D" parent="debug2d/props"]
+position = Vector2( -758, -54 )
+mass = 0.5
+physics_material_override = SubResource( 2 )
+can_sleep = false
+script = ExtResource( 14 )
+
+[node name="node2D" parent="debug2d/props/smallBox" instance=ExtResource( 13 )]
+position = Vector2( -1, -43.5 )
+
+[node name="sprite" type="Sprite" parent="debug2d/props/smallBox"]
+texture = ExtResource( 11 )
+
+[node name="collisionShape2D" type="CollisionShape2D" parent="debug2d/props/smallBox"]
+shape = SubResource( 3 )
+
+[node name="smallBox2" parent="debug2d/props" instance=ExtResource( 15 )]
+position = Vector2( -1006, -155 )
+
+[node name="smallBox3" parent="debug2d/props" instance=ExtResource( 15 )]
+position = Vector2( -1041, -155 )
+
+[node name="longBox" parent="debug2d/props" instance=ExtResource( 16 )]
+position = Vector2( -1064, -41 )
+
+[node name="longBox2" parent="debug2d/props" instance=ExtResource( 16 )]
+position = Vector2( -993, -41 )
+
+[node name="longBox3" parent="debug2d/props" instance=ExtResource( 16 )]
+position = Vector2( -1060, -80 )
+
+[node name="longBox9" parent="debug2d/props" instance=ExtResource( 16 )]
+position = Vector2( -988, -81 )
+
+[node name="longBox10" parent="debug2d/props" instance=ExtResource( 16 )]
+position = Vector2( -1026, -120 )
+
+[node name="longBox4" parent="debug2d/props" instance=ExtResource( 16 )]
+position = Vector2( -589, -39 )
+
+[node name="longBox5" parent="debug2d/props" instance=ExtResource( 16 )]
+position = Vector2( -476, -40 )
+
+[node name="longBox6" parent="debug2d/props" instance=ExtResource( 16 )]
+position = Vector2( -573, -78 )
+
+[node name="longBox7" parent="debug2d/props" instance=ExtResource( 16 )]
+position = Vector2( -498, -79 )
+
+[node name="longBox8" parent="debug2d/props" instance=ExtResource( 16 )]
+position = Vector2( -535, -119 )
+
+[editable path="debug2d/playerClawPair"]
+[editable path="debug2d/playerClawPair/player"]

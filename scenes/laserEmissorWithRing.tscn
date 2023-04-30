@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/ringArea2d.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/laserEmissor.tscn" type="PackedScene" id=2]
+
+[node name="laserEmissor" instance=ExtResource( 2 )]
+
+[node name="ringArea2d" parent="." index="0" instance=ExtResource( 1 )]
+position = Vector2( 0, -28 )

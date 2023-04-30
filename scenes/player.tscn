@@ -1,0 +1,113 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/player.gd" type="Script" id=1]
+[ext_resource path="res://resources/textures/playerBase.png" type="Texture" id=2]
+[ext_resource path="res://resources/textures/playerFaceNeutral.png" type="Texture" id=3]
+[ext_resource path="res://resources/textures/playerFaceHeavy.png" type="Texture" id=4]
+[ext_resource path="res://resources/textures/playerFaceDanger.png" type="Texture" id=5]
+[ext_resource path="res://resources/textures/playerFaceBlank.png" type="Texture" id=6]
+[ext_resource path="res://resources/textures/playerFaceHurt.png" type="Texture" id=7]
+[ext_resource path="res://resources/textures/playerLightSmooth.png" type="Texture" id=8]
+[ext_resource path="res://resources/sfx/sfxPlayerMove.ogg" type="AudioStream" id=9]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 40, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 80, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 120, 0, 40, 40 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 24.0
+} ]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 24, 14 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "danger",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "heavy",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "hurt",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "neutral",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17, 17 )
+
+[node name="player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="sfxPlayerMoving" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -30.0
+bus = "sfx"
+
+[node name="animatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 6 )
+frame = 3
+playing = true
+
+[node name="sprite" type="Sprite" parent="animatedSprite"]
+modulate = Color( 1, 1, 1, 0.15 )
+scale = Vector2( 0.05, 0.05 )
+z_index = -1
+texture = ExtResource( 8 )
+
+[node name="cablePositions" type="Node2D" parent="animatedSprite"]
+
+[node name="0" type="Position2D" parent="animatedSprite/cablePositions"]
+position = Vector2( 0, 16 )
+
+[node name="1" type="Position2D" parent="animatedSprite/cablePositions"]
+position = Vector2( -16, 16 )
+
+[node name="2" type="Position2D" parent="animatedSprite/cablePositions"]
+position = Vector2( 16, 16 )
+
+[node name="facialExpressions" type="Node2D" parent="animatedSprite"]
+
+[node name="sprite" type="AnimatedSprite" parent="animatedSprite/facialExpressions"]
+position = Vector2( 1, 2 )
+frames = SubResource( 8 )
+animation = "neutral"
+playing = true
+
+[node name="collisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+limit_bottom = 360
+limit_smoothed = true

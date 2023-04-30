@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/colShape2dWithRing.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/textures/keycard.png" type="Texture" id=2]
+[ext_resource path="res://scenes/keycard.gd" type="Script" id=3]
+
+[sub_resource type="PhysicsMaterial" id=2]
+rough = true
+bounce = 0.3
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 12, 15 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 14, 10 )
+
+[node name="keycard" type="RigidBody2D" groups=["Keycard"]]
+position = Vector2( 404, 285 )
+mass = 0.5
+physics_material_override = SubResource( 2 )
+can_sleep = false
+script = ExtResource( 3 )
+
+[node name="node2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1, -24 )
+shape = SubResource( 5 )
+
+[node name="sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="collisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 6 )

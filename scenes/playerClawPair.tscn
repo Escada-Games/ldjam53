@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/playerClawPair.gd" type="Script" id=2]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/claw.tscn" type="PackedScene" id=4]
+
+[node name="playerClawPair" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="springPlayerClaw" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("../player")
+node_b = NodePath("../claw")
+length = 4.0
+rest_length = 4.0
+stiffness = 64.0
+damping = 16.0
+
+[node name="player" parent="." instance=ExtResource( 3 )]
+
+[node name="claw" parent="." instance=ExtResource( 4 )]
+position = Vector2( -2, 35 )

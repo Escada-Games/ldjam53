@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/rcLaser.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/textures/normalMirror.png" type="Texture" id=2]
+[ext_resource path="res://scenes/mirror.gd" type="Script" id=3]
+[ext_resource path="res://resources/placeholderMinimalTextures/white.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 0.75, 18.75 )
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("light2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -32, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "glint"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("light2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 0 ),
+"update": 0,
+"values": [ Vector2( -32, 0 ), Vector2( 40, 0 ) ]
+}
+
+[node name="mirror" type="RigidBody2D"]
+script = ExtResource( 3 )
+
+[node name="sprite" type="Sprite" parent="."]
+light_mask = 32
+texture = ExtResource( 2 )
+
+[node name="rcLaser" parent="." instance=ExtResource( 1 )]
+bShowEmissionParticles = false
+
+[node name="collisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -17, 18, -17, 10, 10, -17, 18, -17, 18, 18 )
+
+[node name="solidSides" type="KinematicBody2D" parent="."]
+
+[node name="0" type="CollisionShape2D" parent="solidSides"]
+position = Vector2( 19, 0 )
+shape = SubResource( 11 )
+
+[node name="1" type="CollisionShape2D" parent="solidSides"]
+position = Vector2( 0.250001, 19 )
+rotation = 1.57079
+shape = SubResource( 11 )
+
+[node name="light2D" type="Light2D" parent="."]
+light_mask = 32
+position = Vector2( -32, 0 )
+rotation = 0.785397
+scale = Vector2( 4, 54.4591 )
+texture = ExtResource( 4 )
+energy = 16.0
+range_item_cull_mask = 32
+
+[node name="animationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "glint"
+anims/RESET = SubResource( 12 )
+anims/glint = SubResource( 13 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tekaDeliveryService.ogg-1b704aae49e378eeec8d1c4cd77415e8.oggstr"
+
+[deps]
+
+source_file="res://resources/music/tekaDeliveryService.ogg"
+dest_files=[ "res://.import/tekaDeliveryService.ogg-1b704aae49e378eeec8d1c4cd77415e8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

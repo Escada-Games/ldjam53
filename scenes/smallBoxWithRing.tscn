@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/colShape2dWithRing.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/smallBox.tscn" type="PackedScene" id=2]
+
+[sub_resource type="PhysicsMaterial" id=2]
+rough = true
+bounce = 0.3
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="smallBox" instance=ExtResource( 2 )]
+physics_material_override = SubResource( 2 )
+can_sleep = false
+
+[node name="node2D" parent="." index="0" instance=ExtResource( 1 )]
+position = Vector2( 0, -27 )
+
+[node name="collisionShape2D" parent="." index="2"]
+shape = SubResource( 1 )

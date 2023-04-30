@@ -1,0 +1,169 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/playerClawPair.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/deliveryZone.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/bgSkyParallax.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/tileset1.tres" type="TileSet" id=4]
+[ext_resource path="res://resources/tileset2.tres" type="TileSet" id=5]
+[ext_resource path="res://scenes/mirror.tscn" type="PackedScene" id=6]
+[ext_resource path="res://resources/tileset3.tres" type="TileSet" id=7]
+[ext_resource path="res://resources/tileset3-noOutline.tres" type="TileSet" id=8]
+[ext_resource path="res://resources/textures/grassProps.png" type="Texture" id=9]
+[ext_resource path="res://scenes/laserEmissor.tscn" type="PackedScene" id=10]
+[ext_resource path="res://resources/tileset2-noOutline.tres" type="TileSet" id=12]
+[ext_resource path="res://resources/tileset1-noOutline.tres" type="TileSet" id=13]
+
+[sub_resource type="TileSet" id=1]
+0/name = "grassProps.png 0"
+0/texture = ExtResource( 9 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 128, 128 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 32, 32 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="debugRoot" type="Node"]
+
+[node name="debug2d" type="Node2D" parent="."]
+
+[node name="bgSkyParallax" parent="debug2d" instance=ExtResource( 3 )]
+
+[node name="tilemapsOffsetLayer" type="ParallaxBackground" parent="debug2d"]
+layer = -50
+
+[node name="tilemapsOffset2" type="ParallaxLayer" parent="debug2d/tilemapsOffsetLayer"]
+modulate = Color( 0.4, 0.4, 0.4, 1 )
+position = Vector2( -48, -48 )
+scale = Vector2( 0.5, 0.5 )
+motion_scale = Vector2( 0.5, 0 )
+
+[node name="tileMap1" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset2"]
+tile_set = ExtResource( 13 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tileMap2" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset2"]
+tile_set = ExtResource( 12 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tileMap3" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset2"]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tilemapsOffset1" type="ParallaxLayer" parent="debug2d/tilemapsOffsetLayer"]
+modulate = Color( 0.699219, 0.699219, 0.699219, 1 )
+position = Vector2( -64, -48 )
+scale = Vector2( 0.8, 0.8 )
+motion_scale = Vector2( 0.8, 0 )
+
+[node name="tileMap1" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset1"]
+tile_set = ExtResource( 13 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tileMap2" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset1"]
+tile_set = ExtResource( 12 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tileMap3" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset1"]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="deliveryZone" parent="debug2d" instance=ExtResource( 2 )]
+position = Vector2( 510, 232 )
+
+[node name="tilemaps" type="Node2D" parent="debug2d"]
+
+[node name="tileMap1" type="TileMap" parent="debug2d/tilemaps"]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131071, 0, 196609, 65536, 0, 3, 65537, 0, 3, 65538, 0, 0, 196607, 0, 1, 131072, 0, 65538, 131073, 0, 65538, 131074, 0, 131075, 262143, 0, 1, 196608, 0, 65538, 196609, 0, 65538, 196610, 0, 131075, 327679, 0, 1, 262144, 0, 65538, 262145, 0, 65538, 262146, 0, 131075, 393215, 0, 1, 327680, 0, 65538, 327681, 0, 65538, 327682, 0, 131075, 458751, 0, 1, 393216, 0, 65538, 393217, 0, 65538, 393218, 0, 2, 393219, 0, 0, 524287, 0, 1, 458752, 0, 65538, 458753, 0, 65538, 458754, 0, 65538, 458755, 0, 2, 458756, 0, 0, 589823, 0, 1, 524288, 0, 65538, 524289, 0, 65538, 524290, 0, 65538, 524291, 0, 65538, 524292, 0, 2, 524293, 0, 0, 655359, 0, 1, 589824, 0, 65538, 589825, 0, 65538, 589826, 0, 65538, 589827, 0, 65538, 589828, 0, 65538, 589829, 0, 2, 589830, 0, 3, 589831, 0, 3, 589832, 0, 3, 589833, 0, 3, 589834, 0, 3, 589835, 0, 3, 589836, 0, 3, 589837, 0, 3, 589838, 0, 3, 589839, 0, 3, 589840, 0, 3, 589841, 0, 3, 589842, 0, 3, 589843, 0, 3, 589844, 0, 0, 720895, 0, 1, 655360, 0, 65538, 655361, 0, 65538, 655362, 0, 65538, 655363, 0, 65538, 655364, 0, 65538, 655365, 0, 65538, 655366, 0, 65538, 655367, 0, 65538, 655368, 0, 65538, 655369, 0, 65538, 655370, 0, 65538, 655371, 0, 65538, 655372, 0, 65538, 655373, 0, 65538, 655374, 0, 65538, 655375, 0, 65538, 655376, 0, 65538, 655377, 0, 65538, 655378, 0, 65538, 655379, 0, 65538, 655380, 0, 131075, 786431, 0, 131072, 720896, 0, 131073, 720897, 0, 131073, 720898, 0, 131073, 720899, 0, 131073, 720900, 0, 131073, 720901, 0, 131073, 720902, 0, 131073, 720903, 0, 131073, 720904, 0, 131073, 720905, 0, 131073, 720906, 0, 131073, 720907, 0, 131073, 720908, 0, 131073, 720909, 0, 131073, 720910, 0, 131073, 720911, 0, 131073, 720912, 0, 131073, 720913, 0, 131073, 720914, 0, 131073, 720915, 0, 131073, 720916, 0, 196611, 917499, 0, 196609, 917500, 0, 3, 917501, 0, 0, 983035, 0, 1, 983036, 0, 65538, 983037, 0, 131075, 1048571, 0, 1, 1048572, 0, 65538, 1048573, 0, 131075, 1114107, 0, 1, 1114108, 0, 65538, 1114109, 0, 131075, 1179643, 0, 131072, 1179644, 0, 131073, 1179645, 0, 196611 )
+
+[node name="tileMap2" type="TileMap" parent="debug2d/tilemaps"]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 917503, 0, 196609, 851968, 0, 3, 851969, 0, 0, 983039, 0, 1, 917504, 0, 65538, 917505, 0, 131075, 1048575, 0, 1, 983040, 0, 65538, 983041, 0, 131075, 1114111, 0, 1, 1048576, 0, 65538, 1048577, 0, 131075, 1179647, 0, 131072, 1114112, 0, 131073, 1114113, 0, 196611 )
+
+[node name="tileMap3" type="TileMap" parent="debug2d/tilemaps"]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 851971, 0, 196609, 851972, 0, 3, 851973, 0, 0, 917507, 0, 1, 917508, 0, 65538, 917509, 0, 131075, 983043, 0, 1, 983044, 0, 65538, 983045, 0, 131075, 1048579, 0, 1, 1048580, 0, 65538, 1048581, 0, 131075, 1114115, 0, 131072, 1114116, 0, 131073, 1114117, 0, 196611 )
+
+[node name="tileMapGrasProps" type="TileMap" parent="debug2d/tilemaps"]
+position = Vector2( 16, 16 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 524294, 0, 3, 524295, 0, 131072, 524296, 0, 2, 524297, 0, 65538, 524298, 0, 1, 524299, 0, 65537, 524300, 0, 131073, 524301, 0, 196610, 524302, 0, 2, 1179680, 0, 327681, 1179681, 0, 196610, 1179682, 0, 131072, 1179683, 0, 196611, 1179684, 0, 65537, 1179685, 0, 65537 )
+
+[node name="playerClawPair" parent="debug2d" instance=ExtResource( 1 )]
+position = Vector2( 119, 156 )
+
+[node name="laserEmissor" parent="debug2d" instance=ExtResource( 10 )]
+position = Vector2( 209, 289 )
+mode = 1
+
+[node name="laserEmissor2" parent="debug2d" instance=ExtResource( 10 )]
+position = Vector2( 209, 253 )
+rotation = -1.57079
+mode = 1
+
+[node name="mirror" parent="debug2d" instance=ExtResource( 6 )]
+position = Vector2( 352, 280 )
+mode = 1
+
+[node name="mirror3" parent="debug2d" instance=ExtResource( 6 )]
+position = Vector2( 417, 32 )
+rotation = 3.14159
+mode = 1
+
+[node name="mirror4" parent="debug2d" instance=ExtResource( 6 )]
+position = Vector2( 552, 32 )
+mode = 1
+
+[node name="mirror5" parent="debug2d" instance=ExtResource( 6 )]
+position = Vector2( 200, 136 )
+rotation = 4.71238
+mode = 1
+
+[node name="mirror6" parent="debug2d" instance=ExtResource( 6 )]
+position = Vector2( 152, 191 )
+rotation = 1.57079
+mode = 1
+
+[node name="mirror2" parent="debug2d" instance=ExtResource( 6 )]
+position = Vector2( 424, 136 )
+mode = 1

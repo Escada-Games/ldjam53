@@ -1,0 +1,141 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "RigidBody2DWithSound",
+"class": "AtomicBomb",
+"language": "GDScript",
+"path": "res://scenes/atomicBomb.gd"
+}, {
+"base": "Node2D",
+"class": "DeliveryZone",
+"language": "GDScript",
+"path": "res://scenes/deliveryZone.gd"
+}, {
+"base": "RigidBody2DWithSound",
+"class": "Keycard",
+"language": "GDScript",
+"path": "res://scenes/keycard.gd"
+}, {
+"base": "CanvasLayer",
+"class": "LayerTransition",
+"language": "GDScript",
+"path": "res://scenes/layers/layerTransition.gd"
+}, {
+"base": "RigidBody2DWithSound",
+"class": "LongBox",
+"language": "GDScript",
+"path": "res://scenes/longBox.gd"
+}, {
+"base": "RigidBody2DWithSound",
+"class": "Mirror",
+"language": "GDScript",
+"path": "res://scenes/mirror.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scenes/player.gd"
+}, {
+"base": "RayCast2D",
+"class": "RayCast2DLaser",
+"language": "GDScript",
+"path": "res://scenes/rcLaser.gd"
+}, {
+"base": "RigidBody2D",
+"class": "RigidBody2DWithSound",
+"language": "GDScript",
+"path": "res://scenes/class_RigidBody2DWithSound.gd"
+}, {
+"base": "RigidBody2DWithSound",
+"class": "SmallBox",
+"language": "GDScript",
+"path": "res://scenes/smallBox.gd"
+}, {
+"base": "Sprite",
+"class": "SpriteFadeCell",
+"language": "GDScript",
+"path": "res://scenes/layers/sprFadeCell.gd"
+} ]
+_global_script_class_icons={
+"AtomicBomb": "",
+"DeliveryZone": "",
+"Keycard": "",
+"LayerTransition": "",
+"LongBox": "",
+"Mirror": "",
+"Player": "",
+"RayCast2DLaser": "",
+"RigidBody2DWithSound": "",
+"SmallBox": "",
+"SpriteFadeCell": ""
+}
+
+[application]
+
+config/name="Traz Logo"
+run/main_scene="res://scenes/stages/titleScreen.tscn"
+boot_splash/image="res://resources/meta/splash.png"
+config/icon="res://resources/meta/icon.png"
+config/macos_native_icon="res://resources/meta/icon.png"
+config/windows_native_icon="res://resources/meta/icon.ico"
+
+[autoload]
+
+AudioManager="*res://AudioManager.gd"
+global="*res://global.gd"
+
+[display]
+
+window/size/width=640
+window/size/height=360
+window/size/test_width=960
+window/size/test_height=540
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+ui_claw={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":88,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":90,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_debug={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777229,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_reset={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[node]
+
+name_casing=1
+
+[physics]
+
+common/enable_pause_aware_picking=true
+2d/default_gravity=980
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

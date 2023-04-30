@@ -1,0 +1,161 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://resources/tileset2.tres" type="TileSet" id=1]
+[ext_resource path="res://resources/tileset1.tres" type="TileSet" id=2]
+[ext_resource path="res://resources/tileset2-noOutline.tres" type="TileSet" id=3]
+[ext_resource path="res://resources/tileset3.tres" type="TileSet" id=4]
+[ext_resource path="res://resources/tileset1-noOutline.tres" type="TileSet" id=5]
+[ext_resource path="res://resources/tileset3-noOutline.tres" type="TileSet" id=6]
+[ext_resource path="res://resources/textures/grassProps.png" type="Texture" id=7]
+[ext_resource path="res://scenes/playerClawPair.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/bgSkyParallax.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/deliveryZone.tscn" type="PackedScene" id=10]
+[ext_resource path="res://resources/textures/sprTitle.png" type="Texture" id=11]
+[ext_resource path="res://resources/textures/pressXtoStart.png" type="Texture" id=12]
+[ext_resource path="res://scenes/stages/sprTitle.gd" type="Script" id=13]
+
+[sub_resource type="TileSet" id=1]
+0/name = "grassProps.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 128, 128 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 32, 32 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="debugRoot" type="Node"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 180.0 ],
+"_edit_vertical_guides_": [ 320.0 ]
+}
+
+[node name="debug2d" type="Node2D" parent="."]
+position = Vector2( 1079, 285 )
+
+[node name="bgSkyParallax" parent="debug2d" instance=ExtResource( 9 )]
+
+[node name="tilemapsOffsetLayer" type="ParallaxBackground" parent="debug2d"]
+layer = -50
+
+[node name="tilemapsOffset2" type="ParallaxLayer" parent="debug2d/tilemapsOffsetLayer"]
+modulate = Color( 0.4, 0.4, 0.4, 1 )
+position = Vector2( -48, -48 )
+scale = Vector2( 0.5, 0.5 )
+motion_scale = Vector2( 0.5, 0 )
+
+[node name="tileMap1" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset2"]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tileMap2" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset2"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tileMap3" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset2"]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tilemapsOffset1" type="ParallaxLayer" parent="debug2d/tilemapsOffsetLayer"]
+modulate = Color( 0.699219, 0.699219, 0.699219, 1 )
+position = Vector2( -64, -48 )
+scale = Vector2( 0.8, 0.8 )
+motion_scale = Vector2( 0.8, 0 )
+
+[node name="tileMap1" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset1"]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tileMap2" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset1"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="tileMap3" type="TileMap" parent="debug2d/tilemapsOffsetLayer/tilemapsOffset1"]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+
+[node name="deliveryZone" parent="debug2d" instance=ExtResource( 10 )]
+position = Vector2( 510, 232 )
+
+[node name="tilemaps" type="Node2D" parent="debug2d"]
+
+[node name="tileMap1" type="TileMap" parent="debug2d/tilemaps"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+
+[node name="tileMap2" type="TileMap" parent="debug2d/tilemaps"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 917503, 0, 196609, 851968, 0, 3, 851969, 0, 0, 983039, 0, 1, 917504, 0, 65538, 917505, 0, 131075, 1048575, 0, 1, 983040, 0, 65538, 983041, 0, 131075, 1114111, 0, 1, 1048576, 0, 65538, 1048577, 0, 131075, 1179647, 0, 131072, 1114112, 0, 131073, 1114113, 0, 196611 )
+
+[node name="tileMap3" type="TileMap" parent="debug2d/tilemaps"]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 851971, 0, 196609, 851972, 0, 3, 851973, 0, 0, 917507, 0, 1, 917508, 0, 65538, 917509, 0, 131075, 983043, 0, 1, 983044, 0, 65538, 983045, 0, 131075, 1048579, 0, 1, 1048580, 0, 65538, 1048581, 0, 131075, 1114115, 0, 131072, 1114116, 0, 131073, 1114117, 0, 196611 )
+
+[node name="tileMapGrasProps" type="TileMap" parent="debug2d/tilemaps"]
+position = Vector2( 16, 16 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 1179680, 0, 327681, 1179681, 0, 196610, 1179682, 0, 131072, 1179683, 0, 196611, 1179684, 0, 65537, 1179685, 0, 65537 )
+
+[node name="playerClawPair" parent="debug2d" instance=ExtResource( 8 )]
+position = Vector2( -759, -105 )
+
+[node name="animatedSprite" parent="debug2d/playerClawPair/player" index="1"]
+frame = 2
+
+[node name="camera2D" parent="debug2d/playerClawPair/player" index="3"]
+limit_right = 640
+
+[node name="props" type="Node2D" parent="debug2d"]
+
+[node name="sprTitle" type="Sprite" parent="debug2d/props"]
+position = Vector2( -759, -208 )
+scale = Vector2( 3, 3 )
+z_index = -10
+texture = ExtResource( 11 )
+script = ExtResource( 13 )
+
+[node name="sprite2" type="Sprite" parent="debug2d/props"]
+position = Vector2( -759, 34 )
+z_index = -10
+texture = ExtResource( 12 )
+
+[editable path="debug2d/playerClawPair"]
+[editable path="debug2d/playerClawPair/player"]
